@@ -4,8 +4,8 @@
     require_once __DIR__."/../src/cars.php";
 
     session_start();
-    if (empty($_SESSION['list_of_tamagotchis'])) {
-        $_SESSION['list_of_tamagotchis'] = array();
+    if (empty($_SESSION['list_of_cars'])) {
+        $_SESSION['list_of_cars'] = array();
     }
 
     $app = new Silex\Application();
@@ -13,40 +13,11 @@
     $app->register(new Silex\Provider\TwigServiceProvider(), array(
         'twig.path' => __DIR__.'/../views'
     ));
-  // End Red Tape
-      
-    $app->get("/", function() {
-        return
-        "<!DOCTYPE html>
-        <html>
-          <head>
-            <meta charset='utf-8'>
-            <title>Suzie's Car Pavillion</title>
-            <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
-          </head>
+    // End Red Tape
 
-          <body>
-            <div class='container'>
-              <div class='jumbotron'>
-              <h1>Suzie's Car Pavillion</h1>
-
-              <form action='dealership'>
-                <div class='form-group'>
-                  <label for='price'>Enter how much money chew gots for a car bro</label>
-                  <input type='number' name='price' id='price'class='form-control' >
-                </div>
-                <div class='form-group'>
-                  <label for='color'>What color do you want?</label>
-                  <input type='text' name='color' id='color' class='form-control' placeholder='White, Blue, Black or Red'>
-                </div>
-
-                <button type='submit' class='btn btn-sm btn-danger'>Find my car!</button>
-
-              </form>
-              </div>
-            </div>
-          </body>
-        </html>";
+    // GET HOME ROUTE
+    $app->get("/", function() use ($app) {
+        return $app['twig']->render('cars.html.twig', array('cars' => Car::getAll()));
     });
 
     $app->get("/dealership", function() {
