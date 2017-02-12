@@ -3,8 +3,10 @@
   <head>
     <meta charset='utf-8'>
     <title>Suzie's Car Pavillion</title>
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+    <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/lightbox.css">
     <link rel="stylesheet" href="css/styles.css">
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.1.1/ekko-lightbox.js'></script>
   </head>
 
   <body>
@@ -68,17 +70,17 @@
 
       <div class="row">
           {% for car in cars %}
-              <div class='col-md-5 cardiv'>
-                  <div class="row">
-                    <div class="col-md-6">
+              <div class='col-xs-6'>
+                  <div class="row cardiv">
+                    <div class="col-xs-6">
                       <h4>{{ car.getYear }}</h4>
                       <h4>{{ car.getMake }} {{ car.getModel }}</h4>
                       <h6>Miles: {{ car.getMiles }}</h6>
                       <h6>Color: {{ car.getColor }}</h6>
                       <h6>Price: ${{ car.getPrice }}</h6>
                     </div>
-                    <div class="col-md-6">
-                      <img src='{{ car.getImage }}'>
+                    <div class="col-xs-6">
+                      <a href='{{ car.getImage }}' data-lightbox="image-1" data-title="My caption"><img src='{{ car.getImage }}' class="img-thumbnail"></a>
                     </div>
                   </div>
               </div>  <!-- .col-md-6 -->
@@ -90,5 +92,10 @@
 
 
     </div>  <!-- .container -->
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="js/lightbox.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </body>
 </html>
