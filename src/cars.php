@@ -6,16 +6,16 @@
         private $price;
         private $miles;
         private $color;
-        private $image;
+        // private $image;
 
-        function __construct($make, $model, $price, $miles, $color, $image)
+        function __construct($make, $model, $price, $miles, $color)
         {
             $this->make = $make;
             $this->model = $model;
             $this->price = $price;
             $this->miles = $miles;
             $this->color = $color;
-            $this->image = $image;
+            // $this->image = $image;
         }
 
         // GETTERS

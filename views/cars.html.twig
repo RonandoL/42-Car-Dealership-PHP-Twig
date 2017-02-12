@@ -4,27 +4,86 @@
     <meta charset='utf-8'>
     <title>Suzie's Car Pavillion</title>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="css/styles.css">
   </head>
 
   <body>
     <div class='container'>
       <div class='jumbotron'>
-      <h1>Suzie's Car Pavillion</h1>
+        <h1>Suzie's Car Pavillion</h1>
+        <h2>Sell your car here</h2>
+      </div>  <!-- .jumbotron -->
+      <div class='row'>
+        <div class='col-md-6'>
 
-      <form action='dealership'>
-        <div class='form-group'>
-          <label for='price'>Enter how much money chew gots for a car bro</label>
-          <input type='number' name='price' id='price'class='form-control' >
+          <form action='/dealership' method='post'>
+            <div class='form-group'>
+              <label for='make'>Enter Make of your car</label>
+              <input type='text' name='make' id='make' class='form-control' >
+            </div>
+            <div class='form-group'>
+              <label for='model'>Enter Model of your car</label>
+              <input type='text' name='model' id='model' class='form-control' >
+            </div>
+            <div class='form-group'>
+              <label for='miles'>How many miles does it have?</label>
+              <input type='number' name='miles' id='miles' class='form-control' >
+            </div>
+        </div>  <!-- .col-md-6 -->
+
+        <div class='col-md-6'>
+          <div class='row'>
+            <div class='col-md-12'>
+              <div class='form-group'>
+                <label for='color'>What color is your car</label>
+                <input type='text' name='color' id='color' class='form-control' >
+              </div>
+              <div class='form-group'>
+                <label for='price'>Enter how much money chew gots for a car bro</label>
+                <input type='number' name='price' id='price' class='form-control' >
+              </div>
+            </div>  <!-- .col-md-12 -->
+                <button type='submit' class='btn btn-lg btn-primary'>Find my car!</button>
+          </form>
+          </div>   <!-- .row - buttons-->
+        </div>  <!-- .col-md-6 -->
+      </div>  <!-- .row -->
+
+      <div class='row'>
+        <div class='col-md-3'>
+          <h2>Cars for sale</h2>
         </div>
-        <div class='form-group'>
-          <label for='color'>What color do you want?</label>
-          <input type='text' name='color' id='color' class='form-control' placeholder='White, Blue, Black or Red'>
-        </div>
+        <div class="col-md-3">
+          <br>
+            <form action='/delete' method='post'>
+              <button type='submit' class='btn btn-sm btn-danger'>Delete all Cars</button>
+            </form>  <!-- button form -->
+        </div>  <!-- .col-md-4 -->
+      </div>  <!-- .row -->
 
-        <button type='submit' class='btn btn-sm btn-danger'>Find my car!</button>
+      <div class="row">
+        <div class='col-md-6 cardiv'>
+          {% for car in cars %}
+              <p>Make: {{ car.getMake }} </p>
+              <p>Model: {{ car.getModel }}  </p>
+              <p>Miles: {{ car.getMiles }}</p>
+              <p>Color: {{ car.getColor }}</p>
+              <p>Price: ${{ car.getPrice }}</p>
+          {% endfor %}
 
-      </form>
-      </div>
-    </div>
+
+        </div>  <!-- .col-md-6 -->
+        <div class='col-md-6 cardiv'>
+          <p>stuff goes here</p>
+
+
+        </div>  <!-- .col-md-6 -->
+      </div>  <!-- .row -->
+
+
+
+
+
+    </div>  <!-- .container -->
   </body>
 </html>
