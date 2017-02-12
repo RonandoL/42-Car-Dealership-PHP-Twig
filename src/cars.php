@@ -1,24 +1,31 @@
 <?php
     class Car
     {
+        private $year;
         private $make;
         private $model;
-        private $price;
         private $miles;
         private $color;
-        // private $image;
+        private $price;
+        private $image;
 
-        function __construct($make, $model, $price, $miles, $color)
+        function __construct($year,$make, $model, $miles, $color, $price, $image)
         {
+            $this->year = $year;
             $this->make = $make;
             $this->model = $model;
-            $this->price = $price;
             $this->miles = $miles;
             $this->color = $color;
-            // $this->image = $image;
+            $this->price = $price;            
+            $this->image = $image;
         }
 
         // GETTERS
+        function getYear()
+        {
+            return $this->year;
+        }
+
         function getMake()
         {
             return $this->make;
@@ -29,11 +36,6 @@
             return $this->model;
         }
 
-        function getPrice()
-        {
-            return $this->price;
-        }
-
         function getMiles()
         {
             return $this->miles;
@@ -42,6 +44,11 @@
         function getColor()
         {
             return $this->color;
+        }
+
+        function getPrice()
+        {
+            return $this->price;
         }
 
         function getImage()

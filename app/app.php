@@ -20,9 +20,9 @@
         return $app['twig']->render('cars.html.twig', array('cars' => Car::getAll()));
     });
 
-    // ADD CAR ROUTE
+    // INSTANTIATE - ADD CAR ROUTE
     $app->post("/dealership", function() use ($app) {
-        $car = new Car($_POST['make'], $_POST['model'], $_POST['miles'], $_POST['color'], $_POST['price']);
+        $car = new Car($_POST['year'], ucfirst($_POST['make']), ucfirst($_POST['model']), $_POST['miles'], ucfirst($_POST['color']), $_POST['price'], $_POST['image']);
         $car->save();
 
         return $app['twig']->render('cars.html.twig', array('cars' => Car::getAll()));
@@ -31,8 +31,8 @@
     // DELETE ALL CARS from list_of_cars
     $app->post("/delete", function() use ($app) {
         Car::deleteAll();
-        
-        return $app['twig']->render('cars.html.twig', array('cars' => Car::getAll()));
+
+        return $app['twig']->render('cars.html.twig');
     });
 
 
